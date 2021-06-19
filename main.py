@@ -53,15 +53,30 @@ while keep_playing == True:
 
     #Determines if any of the starting deck reached blackjack.
     if blackjack(player_deck) == True and blackjack(ai_deck) == False:
+        final_hands(player_deck, ai_deck)
         print("You have reached blackjack. You won!!")
         play_again = input("Would you like to play again? 'y' or 'n' ").lower()
         if play_again == 'n':
             keep_playing = False
     if blackjack(ai_deck) == True and blackjack(player_deck) == False:
+        final_hands(player_deck, ai_deck)
         print("The computer has reached blackjack. You lost.")
         play_again = input("Would you like to play again? 'y' or 'n' ").lower()
         if play_again == 'n':
             keep_playing = False
+    if blackjack(player_deck):
+        final_hands(player_deck, ai_deck)
+        print("You have reached blackjack. You won!!")
+        play_again = input("Would you like to play again? 'y' or 'n' ").lower()
+        if play_again == 'n':
+            keep_playing = False
+    if blackjack(ai_deck):
+        final_hands(player_deck, ai_deck)
+        print("The computer has reached blackjack. You lost.")
+        play_again = input("Would you like to play again? 'y' or 'n' ").lower()
+        if play_again == 'n':
+            keep_playing = False
+
 
     #Starts out by printing the starting decks.
     print(f"\tYour cards: {player_deck}, current score: {sum(player_deck)}")
@@ -114,6 +129,8 @@ while keep_playing == True:
                 play_again = input("Would you like to play again? 'y' or 'n' ").lower()
                 if play_again == 'n':
                     keep_playing = False
+        else:
+            computer_drawing = False
     
     #Measures for determining who wins.
     if computer_lost == True and lost_game == False:
@@ -145,4 +162,5 @@ while keep_playing == True:
     
 
 
+    
     
